@@ -7,7 +7,7 @@
     "lint": "gulp lint",
     "test": "gulp test",
     "test:server": "gulp test:server",
-    "start": "node ./scripts/start_server.js"
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
