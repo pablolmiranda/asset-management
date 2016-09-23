@@ -30,4 +30,4 @@ gulp.task('lint', () => {
         .pipe(eslint.failAfterError());
 });
 
-gulp.task('default', ['server:start']);
+gulp.task('default', ['lint', 'server:start']);
