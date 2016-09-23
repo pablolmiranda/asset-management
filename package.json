@@ -4,7 +4,9 @@
   "description": "Simple Asset Managemente UI",
   "main": "src/server/index.js",
   "scripts": {
+    "lint": "gulp lint",
     "test": "gulp test",
+    "test:server": "gulp test:server",
     "start": "node ./scripts/start_server.js"
   },
   "repository": {
@@ -33,6 +35,11 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "commander": "^2.9.0",
+    "eslint": "^3.5.0",
+    "eslint-plugin-react": "^6.3.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-shell": "^0.5.2",
     "jsdom": "^9.5.0",
     "supertest": "^2.0.0"
   }

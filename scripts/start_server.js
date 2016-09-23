@@ -1,3 +1,5 @@
+/* global process */
+/* eslint-disable no-console */
 var server = require('../src/server'),
     http = require('http'),
     argv = require('commander'),

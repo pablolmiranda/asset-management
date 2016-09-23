@@ -1,7 +1,7 @@
+/* global __dirname, describe, it, beforeEach */
 var app = require('../'),
     ExpressHandlebars = require('express-handlebars'),
     expect = require('chai').expect,
-    fs = require('fs'),
     hbs = ExpressHandlebars.create(),
     jsdom = require('jsdom'),
     path = require('path'),
@@ -49,7 +49,6 @@ describe('src/server/index.js', function() {
     describe('/api/movies', function() {
 
         it('returns the list of movie assets', function(done) {
-            var jsonPayload = '';
             request(app)
                 .get('/api/movies')
                 .expect('Content-Type', 'application/json')
@@ -67,7 +66,7 @@ describe('src/server/index.js', function() {
                         expect(assetInfo).to.have.ownProperty('languageCode');
                     });
                     done();
-                })
+                });
         });
 
     });
