@@ -35,6 +35,8 @@ module.exports = {
     },
     "globals": {
         "describe": true,
-        "it": true
+        "expect": true,
+        "it": true,
+        "Factory": true
     }
 };

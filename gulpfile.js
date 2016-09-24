@@ -43,7 +43,12 @@ gulp.task('bundle', () => {
 
 gulp.task('test', () => {
     return gulp.src(path.join(paths.appSrc, '**/__tests__/*'))
-        .pipe(mocha({reporter: 'tap'}));
+        .pipe(mocha({
+            reporter: 'tap',
+            require: [
+                './test/setup.js'
+            ]
+        }));
 });
 
 gulp.task('default', ['lint', 'bundle','server:start']);
