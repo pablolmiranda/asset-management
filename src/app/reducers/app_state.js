@@ -1,25 +1,17 @@
-import zipObject from 'lodash/zipObject';
-
-let actions = [
-    'APP_LOADING_FINISHED'
-];
-
-actions = zipObject(actions, actions);
-
-export {actions};
+import { actions } from '../constants';
 
 export default (state = {}, action) => {
     switch(action.type){
         case actions.APP_LOADING_FINISHED:
             state = {
                 ...state,
-                loading: action.loading
+                loading: false
             };
             break;
         case actions.APP_LOADING_START:
             state = {
                 ...state,
-                loading: action.loading
+                loading: true
             };
         default:
             break;

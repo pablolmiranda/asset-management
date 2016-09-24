@@ -1,13 +1,4 @@
-import zipObject from 'lodash/zipObject';
-
-let actions = [
-    'ASSET_SELECTED',
-    'ASSETS_RECEIVED'
-];
-
-actions = zipObject(actions, actions);
-
-export { actions };
+import { actions } from '../constants';
 
 export default (state = {}, action) => {
     switch (action.type) {

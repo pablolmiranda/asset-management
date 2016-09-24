@@ -1,4 +1,5 @@
-import store, { actions } from '../assets';
+import store from '../assets';
+import { actions } from '../../constants';
 
 describe('src/app/reducers/assets.js', () => {
 
