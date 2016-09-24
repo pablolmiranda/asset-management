@@ -7,12 +7,14 @@ function resolvePath(relativePath) {
 }
 
 module.exports = {
-    appSrc: resolvePath('src'),
     appDist: resolvePath('dist'),
-    appPublic: resolvePath('dist'),
-    appIndexJs: resolvePath('src/app/index.js'),
     appHtmlIndex: resolvePath('src/static/index.hbs'),
+    appIndexJs: resolvePath('src/app/index.js'),
+    appPublic: resolvePath('dist'),
     appServerPayload: resolvePath('src/server/stub/payload.json'),
-    appWebpackConfig: resolvePath('webpack.config.js')
+    appSrc: resolvePath('src'),
+    appWebpackConfig: resolvePath('webpack.config.js'),
+
+    webPublicPath: '/static/'
 };
 

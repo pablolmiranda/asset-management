@@ -5,6 +5,10 @@ var webpack = require('webpack'),
     formatWebpackMessages = require('react-dev-utils/formatWebpackMessages'),
     compiler;
 
+/**
+ * Code extract and modified from
+ * https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/scripts/start.js
+ */
 function setupCompiler(port, webpackConfig) {
     compiler = webpack(webpackConfig);
 

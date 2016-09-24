@@ -6,7 +6,7 @@ var paths = require('../config/paths'),
 module.exports = function(port, server, webpackConfig) {
     var compiler = setupCompiler(port, webpackConfig);
     server.use(webpackDevMiddleware(compiler, {
-        publicPath: '/static/',
+        publicPath: paths.webPublicPath,
         clientLogLevel: 'none',
         hot: true,
         quiet: true,
