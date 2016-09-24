@@ -1,10 +1,11 @@
 import React from 'react';
 import Asset from '../components/Asset';
 import AssetThumbList from '../components/AssetThumbList';
+import { connect } from 'react-redux';
 
-let AssetContainer = ({ asset, assetList, onClickAsset }) => {
+const AssetContainer = ({ asset, assets, onClickAsset }) => {
     var hasSelectedAsset = !!asset,
-        hasAssetList = assetList.length > 0,
+        hasAssetList = assets.length > 0,
         shouldShowList = !hasSelectedAsset && hasAssetList;
 
     return (
@@ -13,10 +14,16 @@ let AssetContainer = ({ asset, assetList, onClickAsset }) => {
                 <Asset asset={asset} onClickClose={onClickAsset}/>
             }
             { shouldShowList &&
-                <AssetThumbList assets={assetList} onClickAsset={onClickAsset}/>
+                <AssetThumbList assets={assets} onClickAsset={onClickAsset}/>
             }
         </div>
     );
 };
 
-export default AssetContainer;
+const mapStateToProps = (state) => ({
+    assets: state.assets
+});
+
+const Container = connect(mapStateToProps, null)(AssetContainer);
+
+export default Container;

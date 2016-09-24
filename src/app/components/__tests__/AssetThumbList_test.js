@@ -5,7 +5,7 @@ import AssetThumb from '../AssetThumb';
 
 describe('src/app/components/AssetThumbList.js', () => {
 
-    it('renders asset container element', function() {
+    it('renders asset container element', () => {
         const assets = Factory.buildList('asset', 10);
         const wrapper = mount(<AssetThumbList assets={assets} />);
 

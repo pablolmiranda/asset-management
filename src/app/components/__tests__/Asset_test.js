@@ -2,9 +2,9 @@ import React from 'react';
 import Asset from '../Asset';
 import { mount } from 'enzyme';
 
-describe('src/app/components/Asset.js', function() {
+describe('src/app/components/Asset.js', () => {
 
-    it('renders a asset correctly', function() {
+    it('renders a asset correctly', () => {
         const asset = Factory.build('asset');
         let wrapper = mount(<Asset asset={asset} />);
 
