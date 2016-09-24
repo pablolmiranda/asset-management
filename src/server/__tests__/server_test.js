@@ -1,28 +1,25 @@
-/* global __dirname, describe, it, beforeEach */
+/* global describe, it, beforeEach */
 var app = require('../'),
+    paths = require('../../../config/paths'),
     ExpressHandlebars = require('express-handlebars'),
     expect = require('chai').expect,
     hbs = ExpressHandlebars.create(),
-    jsdom = require('jsdom'),
-    path = require('path'),
-    request = require('supertest'),
-    SRC_DIR = path.resolve(__dirname, '../../'),
-    HTML_INDEX_PATH = path.resolve(SRC_DIR, 'static/index.hbs');
+    request = require('supertest');
 
-describe('src/server/index.js', function() {
+describe('src/server/index.js', () => {
 
     var html;
 
-    beforeEach(function(done) {
-        hbs.render(HTML_INDEX_PATH)
+    beforeEach((done) => {
+        hbs.render(paths.appHtmlIndex)
             .then(function(renderedTemplate) {
                 html = renderedTemplate;
             })
             .then(done, done);
     });
 
-    describe('/', function() {
-        it('launchs the UI through index.html', function(done) {
+    describe('/', () => {
+        it('launchs the UI through index.html', (done) => {
             request(app)
                 .get('/')
                 .expect('Content-Type', 'text/html; charset=utf-8')
@@ -32,23 +29,15 @@ describe('src/server/index.js', function() {
                     if (err) {
                         done(err);
                     }
-                    jsdom.env(res.text, function(e, window) {
-                        if (e) {
-                            done(e);
-                        }
-
-                        var appElement = window.document.body.children.app;
-                        
-                        expect(appElement.id).to.be.equal('app');
-                        done();
-                    });
+                    expect(res.text).to.contain('id="app"');
+                    done();
                 });
         });    
     });
 
-    describe('/api/movies', function() {
+    describe('/api/movies', () => {
 
-        it('returns the list of movie assets', function(done) {
+        it('returns the list of movie assets', (done) => {
             request(app)
                 .get('/api/movies')
                 .expect('Content-Type', 'application/json')

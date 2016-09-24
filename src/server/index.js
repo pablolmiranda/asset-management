@@ -1,18 +1,16 @@
-/* global __dirname */
 var express = require('express'),
     fs = require('fs'),
-    path = require('path'),
+    paths = require('../../config/paths'),
     app = express(),
     ExpressHandlebars = require('express-handlebars'),
     handlebars = ExpressHandlebars.create({}),
-    SRC_DIR = path.resolve(__dirname, '..'),
-    HTML_INDEX_PATH = path.join(SRC_DIR, 'static', 'index.hbs'),
-    JSON_PAYLOAD_PATH = path.join(SRC_DIR, 'server', 'stub', 'payload.json'),
     STREAM_BUFFER_SIZE = 64 * 1024;
+
+// app.use('/static/', express.static(paths.appDist));
 
 // Renders a simple HTML to launch the UI
 app.get('/', (req, res) => {
-    handlebars.render(HTML_INDEX_PATH)
+    handlebars.render(paths.appHtmlIndex)
         .then((html) => {
             res.send(html);
         })
@@ -21,7 +19,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/movies', (req, res) => {
     res.set('Content-Type', 'application/json');
-    var stream = fs.createReadStream(JSON_PAYLOAD_PATH, { bufferSize: STREAM_BUFFER_SIZE});
+    var stream = fs.createReadStream(paths.appServerPayload, { bufferSize: STREAM_BUFFER_SIZE});
     stream.pipe(res);
 });
 
