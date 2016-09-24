@@ -14,7 +14,8 @@ config = {
     ],
     output: {
         path: paths.appDist,
-        filename: 'app.js'
+        filename: 'app.js',
+        publicPath: '/static/'
     },
     plugins: [
         new webpack.DefinePlugin({

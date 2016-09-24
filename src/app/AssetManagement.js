@@ -3,7 +3,7 @@ import React from 'react';
 class AssetManagement extends React.Component {
     render() {
         return <div>
-            Hello World really
+            Hello World!
         </div>;
     }
 }
