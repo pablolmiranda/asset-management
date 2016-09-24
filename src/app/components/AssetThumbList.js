@@ -1,14 +1,13 @@
 import React from 'react';
+import AssetThumb from './AssetThumb';
 
-const AssetThumbList = ({assetList, onClickAsset}) => {
+const AssetThumbList = ({assets, onClickAsset}) => {
     return (
         <div className="asset-list">
             <ul>
-                {assetList.map((asset, index) => {
+                {assets.map((asset, index) => {
                     return (
-                        <li key={index} className="asset">
-                            <img src={asset.thumbnailUrl} onClick={() => onClickAsset(asset)}/>
-                        </li>
+                        <AssetThumb key={index} asset={asset} onClick={onClickAsset}/>
                     );
                 })}
             </ul>
