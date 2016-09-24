@@ -13,6 +13,9 @@ module.exports = {
     appPublic: resolvePath('dist'),
     appServerPayload: resolvePath('src/server/stub/payload.json'),
     appSrc: resolvePath('src'),
+    appScripts: resolvePath('scripts'),
+    appStatics: resolvePath('src/static'),
+    appStartServer: resolvePath('scripts/start_server.js'),
     appWebpackConfig: resolvePath('webpack.config.js'),
 
     webPublicPath: '/static/'

@@ -1,14 +1,16 @@
-/* global __dirname, console */
+// Enables ES6 on Node.js side
+// The reducer tests need it
+require('babel-core/register')({
+  ignore: /node_modules/
+});
+
 var gulp = require('gulp'),
     eslint = require('gulp-eslint'),
-    shell = require('gulp-shell'),
+    mocha = require('gulp-mocha'),
     path = require('path'),
+    paths = require('./config/paths'),
+    shell = require('gulp-shell'),
     webpack = require('webpack-stream'),
-    ROOT_DIR = path.resolve(__dirname),
-    DIST_DIR = path.join(ROOT_DIR, 'dist'),
-    SRC_DIR = path.join(__dirname, 'src'),
-    START_SERVER_SCRIPT = path.join(ROOT_DIR, 'scripts/', 'start_server.js'),
-    WEBPACK_CONFIG = path.join(ROOT_DIR, 'webpack.config.js'),
     not;
 
 not = (p) => { return '!' + p; };
@@ -16,10 +18,10 @@ not = (p) => { return '!' + p; };
 gulp.task('lint', () => {
     return gulp.src([
             'gulpfile.js',
-            path.join(ROOT_DIR, 'scripts', '**/*'),
-            path.join(SRC_DIR, '**/*'),
-            not(path.join(SRC_DIR, '**/*.json')),
-            not(path.join(SRC_DIR, 'static', '**/*'))
+            path.join(paths.appScripts, '**/*'),
+            path.join(paths.appSrc, '**/*'),
+            not(path.join(paths.appSrc, '**/*.json')),
+            not(path.join(paths.appStatics, '**/*'))
         ])
         .pipe(eslint())
         .pipe(eslint.format())
@@ -27,16 +29,21 @@ gulp.task('lint', () => {
 });
 
 gulp.task('server:start', () => {
-    return gulp.src(START_SERVER_SCRIPT)
+    return gulp.src(paths.appStartServer)
         .pipe(shell([
             'node <%= file.path %>'
         ]));
 });
 
 gulp.task('bundle', () => {
-    return gulp.src(path.join(SRC_DIR, 'app', 'index.js'))
-        .pipe(webpack(require(WEBPACK_CONFIG)))
-        .pipe(gulp.dest(DIST_DIR));
+    return gulp.src(path.join(paths.appIndexJs))
+        .pipe(webpack(require(paths.appWebpackConfig)))
+        .pipe(gulp.dest(paths.appDist));
+});
+
+gulp.task('test', () => {
+    return gulp.src(path.join(paths.appSrc, '**/__tests__/*'))
+        .pipe(mocha({reporter: 'tap'}));
 });
 
 gulp.task('default', ['lint', 'bundle','server:start']);

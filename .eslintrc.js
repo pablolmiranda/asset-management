@@ -17,6 +17,9 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "react/jsx-uses-vars": [
+            "error"
+        ],
         "linebreak-style": [
             "error",
             "unix"
@@ -29,5 +32,9 @@ module.exports = {
             "error",
             "always"
         ]
+    },
+    "globals": {
+        "describe": true,
+        "it": true
     }
 };

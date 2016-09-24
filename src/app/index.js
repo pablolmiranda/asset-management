@@ -1,12 +1,18 @@
 /* eslint-disable no-console */
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './AssetManagement';
+import { render } from 'react-dom';
+import App from './components/AssetManagement';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers';
 
-let el;
+const store = createStore(reducers);
 
-el = window.document.getElementById('app');
+const el = window.document.getElementById('app');
 
-console.log(el);
-
-ReactDOM.render(React.createElement(App), el);
+render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    el
+);

@@ -6,7 +6,7 @@ var base = require('./config/webpack.config.base'),
     config;
 
 config = {
-    devtool: 'eval',
+    devtool: 'cheap-module-source-map',
     entry: [
         'webpack-hot-middleware/client',
         'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
