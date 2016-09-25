@@ -4,6 +4,12 @@ import AssetThumbList from '../components/AssetThumbList';
 import { connect } from 'react-redux';
 import { selectAsset, incrementPageIndex } from '../actions';
 
+/**
+ * This container will be responsible to render the asset thumb list or a specific asset.
+ * When the user select an asset, the container will render the asset information instead of
+ * the asset thumb list.
+ * This container is responsible to query multiple app states the propagate it to children components.
+ */
 const AssetContainer = ({ asset, assets, selectedAssetIndex, selectAsset, pageIndex, incrementPageIndex }) => {
     var hasSelectedAsset = !!asset,
         hasAssetList = assets.length > 0,

@@ -13,10 +13,12 @@ const store = createStore(
     applyMiddleware(thunk)
 );
 
+// Fetch the App data from the API layer
 store.dispatch(fetchAssets());
 
 const el = window.document.getElementById('app');
 
+// Push the App to the DOM.
 render(
     <Provider store={store}>
         <App/>

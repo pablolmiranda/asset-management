@@ -4,6 +4,12 @@ import AssetSectionName from './AssetSectionName';
 
 const RENDER_PAGE_SIZE = 10;
 
+/**
+ * Render the list of assets thumbnails.
+ * The list will be renderd by pages. It allows users to progressively load the assets as they need.
+ * The assets will be organized by section. The section is the index used to sort the assets
+ * ( movieName, languageCode ).
+ */
 const AssetThumbList = ({assets, selectedAssetIndex, numPages, onClickAsset, onClickLoadMore}) => {
     var lastSectionId = null,
         numElementsToRender = RENDER_PAGE_SIZE * numPages,

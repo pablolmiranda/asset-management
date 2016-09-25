@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { assetIndexKeys } from '../constants';
 import { selectAssetIndex } from '../actions';
 
+/**
+ * Group by selector component
+ * Allow the users to select of type of index they want to use on the UI
+ * After change the index the app will render the new asset collection sorted by the index.
+ */
 let GroupBy = ({ selectedIndex, onSelectIndex }) => {
     return (
         <div className="search">
