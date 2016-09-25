@@ -35,11 +35,18 @@ const AssetContainer = ({ asset, assets, selectedAssetIndex, selectAsset, pageIn
 };
 
 const mapStateToProps = (state) => {
+    const query = state.assets.query;
+    let assets = state.assets[state.selectedAssetIndex];
+    if (query && query.length > 0) {
+        assets = query;
+    }
+
     return {
-        assets: state.assets[state.selectedAssetIndex] || [],
+        assets:  assets || [],
         asset: state.assetSelected,
         selectedAssetIndex: state.selectedAssetIndex,
-        pageIndex: state.pageIndex
+        pageIndex: state.pageIndex,
+        queryString: state.assets.queryString
     };
 
 };

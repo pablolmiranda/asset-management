@@ -73,3 +73,11 @@ export const incrementPageIndex = () => {
         type: actions.INCREMENT_PAGE_INDEX
     };
 };
+
+export const searchAssetByIndex = (assetIndex, query) => {
+    return {
+        type: actions.ASSET_INDEX_QUERY,
+        assetIndex: assetIndex,
+        query: query
+    };
+};

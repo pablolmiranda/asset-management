@@ -8,17 +8,17 @@ describe('src/app/reducers/app_state', () => {
         expect(appState(undefined, {})).to.include({});
     });
 
-    it('handles ' + actions.APP_LOADING_START, () => {
+    it('handles ' + actions.ASSETS_REQUEST_STARTED, () => {
         expect(appState({ loading: false }, {
-            type: actions.APP_LOADING_START
+            type: actions.ASSETS_REQUEST_STARTED
         })).to.include({
             loading: true
         });
     });
 
-    it('handles ' + actions.APP_LOADING_FINISHED, () => {
+    it('handles ' + actions.ASSETS_REQUEST_FINISHED, () => {
         expect(appState({}, {
-            type: actions.APP_LOADING_FINISHED
+            type: actions.ASSETS_REQUEST_FINISHED
         })).to.include({
             loading: false
         });

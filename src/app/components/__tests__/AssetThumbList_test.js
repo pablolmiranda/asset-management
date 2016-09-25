@@ -14,7 +14,7 @@ describe('src/app/components/AssetThumbList.js', () => {
 
     it('renders the thumbs for the assets collection', () => {
         const assets = Factory.buildList('asset', 10);
-        const wrapper = mount(<AssetThumbList assets={assets} />);
+        const wrapper = mount(<AssetThumbList assets={assets} numPages={1}/>);
 
         expect(wrapper.find(AssetThumb.name)).to.have.length(10);
     });

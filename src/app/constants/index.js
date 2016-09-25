@@ -9,6 +9,7 @@ let actions = [
     'ASSET_SELECTED',
     'ASSETS_RECEIVED',
     'SELECT_ASSET_INDEX',
+    'ASSET_INDEX_QUERY',
 
     // Page index
     'INCREMENT_PAGE_INDEX'
