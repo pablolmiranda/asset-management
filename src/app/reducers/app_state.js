@@ -1,17 +1,21 @@
 import { actions } from '../constants';
 
+/**
+ * Save the state of the app.
+ * Indicate the app is trying to loading assets from the API layer.
+ */
 export default (state = {}, action) => {
     switch(action.type){
-        case actions.APP_LOADING_FINISHED:
-            state = {
-                ...state,
-                loading: false
-            };
-            break;
-        case actions.APP_LOADING_START:
+        case actions.ASSETS_REQUEST_STARTED:
             state = {
                 ...state,
                 loading: true
+            };
+            break;
+        case actions.ASSETS_REQUEST_FINISHED:
+            state = {
+                ...state,
+                loading: false
             };
             break;
     }

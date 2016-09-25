@@ -17,6 +17,10 @@ app.get('/', (req, res) => {
         .then(res.end, res.end);
 });
 
+/**
+ * Return the collection of movie assets as a stream.
+ * The response object will return res.end at the end of the stream.
+ */
 app.get('/api/movies', (req, res) => {
     res.set('Content-Type', 'application/json');
     var stream = fs.createReadStream(paths.appServerPayload, { bufferSize: STREAM_BUFFER_SIZE});

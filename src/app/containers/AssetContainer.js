@@ -2,9 +2,9 @@ import React from 'react';
 import Asset from '../components/Asset';
 import AssetThumbList from '../components/AssetThumbList';
 import { connect } from 'react-redux';
-import { selectAsset } from '../actions';
+import { selectAsset, incrementPageIndex } from '../actions';
 
-const AssetContainer = ({ asset, assets, selectedAssetIndex, onSelectAsset }) => {
+const AssetContainer = ({ asset, assets, selectedAssetIndex, selectAsset, pageIndex, incrementPageIndex }) => {
     var hasSelectedAsset = !!asset,
         hasAssetList = assets.length > 0,
         shouldShowList = !hasSelectedAsset && hasAssetList;
@@ -13,13 +13,15 @@ const AssetContainer = ({ asset, assets, selectedAssetIndex, onSelectAsset }) =>
         <div className="asset-container">
             {hasSelectedAsset &&
                 <Asset asset={asset}
-                    onClickClose={onSelectAsset}/>
+                    onClickClose={selectAsset}/>
             }
             { shouldShowList &&
                 <AssetThumbList
                     assets={assets}
-                    onClickAsset={onSelectAsset}
+                    onClickAsset={selectAsset}
                     selectedAssetIndex={selectedAssetIndex}
+                    numPages={pageIndex}
+                    onClickLoadMore={incrementPageIndex}
                     />
             }
         </div>
@@ -30,15 +32,19 @@ const mapStateToProps = (state) => {
     return {
         assets: state.assets[state.selectedAssetIndex] || [],
         asset: state.assetSelected,
-        selectedAssetIndex: state.selectedAssetIndex
+        selectedAssetIndex: state.selectedAssetIndex,
+        pageIndex: state.pageIndex
     };
 
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSelectAsset: (asset) => {
+        selectAsset: (asset) => {
             dispatch(selectAsset(asset));
+        },
+        incrementPageIndex: () => {
+            dispatch(incrementPageIndex());
         }
     };
 };
