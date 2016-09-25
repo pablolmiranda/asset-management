@@ -22,7 +22,7 @@ This repo is a exercise to build a Asset Management UI using React and RxJS.
 
 #### Application state describe
 
-```json
+```
 {
     assets: <Array>,
     selectedAsset: <Object>
