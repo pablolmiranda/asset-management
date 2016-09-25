@@ -1,24 +1,12 @@
 import { actions } from '../constants';
 
-export default (state = {}, action) => {
+export default (state = [], action) => {
+
     switch (action.type) {
         case actions.ASSETS_RECEIVED:
-            state = {
-                ...state,
-                assets: [...state.assets, ...action.assets]
-            };
-            break;
-        case actions.ASSET_SELECTED:
-            state = {
-                ...state,
-                selectedAsset: action.asset
-            };
+            state = [...state, ...action.assets];
             break;
         default:
-            state = {
-                assets: [],
-                selectedAsset: null
-            };
             break;
     }
 
