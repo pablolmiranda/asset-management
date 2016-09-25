@@ -4,7 +4,7 @@ import AssetThumbList from '../components/AssetThumbList';
 import { connect } from 'react-redux';
 import { selectAsset } from '../actions';
 
-const AssetContainer = ({ asset, assets, onSelectAsset }) => {
+const AssetContainer = ({ asset, assets, selectedAssetIndex, onSelectAsset }) => {
     var hasSelectedAsset = !!asset,
         hasAssetList = assets.length > 0,
         shouldShowList = !hasSelectedAsset && hasAssetList;
@@ -16,17 +16,24 @@ const AssetContainer = ({ asset, assets, onSelectAsset }) => {
                     onClickClose={onSelectAsset}/>
             }
             { shouldShowList &&
-                <AssetThumbList assets={assets}
-                    onClickAsset={onSelectAsset}/>
+                <AssetThumbList
+                    assets={assets}
+                    onClickAsset={onSelectAsset}
+                    selectedAssetIndex={selectedAssetIndex}
+                    />
             }
         </div>
     );
 };
 
-const mapStateToProps = (state) => ({
-    assets: state.assets,
-    asset: state.assetSelected
-});
+const mapStateToProps = (state) => {
+    return {
+        assets: state.assets[state.selectedAssetIndex] || [],
+        asset: state.assetSelected,
+        selectedAssetIndex: state.selectedAssetIndex
+    };
+
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {

@@ -1,6 +1,6 @@
 import { actions } from '../constants';
 
-export default (state = [], action) => {
+export default (state = {}, action) => {
     switch(action.type){
         case actions.APP_LOADING_FINISHED:
             state = {
@@ -13,7 +13,6 @@ export default (state = [], action) => {
                 ...state,
                 loading: true
             };
-        default:
             break;
     }
 

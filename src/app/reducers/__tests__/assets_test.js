@@ -1,12 +1,11 @@
 import store from '../assets';
-import { actions } from '../../constants';
+import { actions, assetIndexKeys } from '../../constants';
 
 describe('src/app/reducers/assets.js', () => {
 
     it('handles the initial state', () => {
         const state = store(undefined, {});
-        expect(state.assets).to.be.empty;
-        expect(state.selectedAsset).to.be.null;
+        expect(state).to.be.include({});
     });
 
     it('handles ' + actions.ASSETS_RECEIVED, () => {
@@ -16,20 +15,24 @@ describe('src/app/reducers/assets.js', () => {
             assets: assets
         });
 
-        expect(state).to.have.ownProperty('assets');
-        expect(state.assets).to.have.length(assets.length);
-        state.assets.forEach( (asset) => {
-            expect(assets.indexOf(asset)).to.not.be.equal(-1);
+        assetIndexKeys.forEach((key) => {
+            expect(state).to.have.ownProperty(key);
+            expect(state[key]).to.have.length(assets.length);
         });
     });
 
-    it('handles ' + actions.ASSET_SELECTED, () => {
-        const asset = Factory.build('asset');
-        const state = store({}, {
-            type: actions.ASSET_SELECTED,
-            asset: asset
+    it('sorts the collection by index key', () => {
+        const assets = [
+            Factory.build('asset', { languageCode: 'pt', movieName: 'test 2' }),
+            Factory.build('asset', { languageCode: 'en', movieName: 'test 1' })
+        ];
+
+        const state = store({ assets: []}, {
+            type: actions.ASSETS_RECEIVED,
+            assets: assets
         });
-        expect(state.selectedAsset).to.be.equal(asset);
+
+        expect(state.movieName[0]).to.be.equal(assets[1]);
     });
 
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import SearchArea from '../containers/SearchArea';
+import GroupBy from '../containers/GroupBy';
 import AssetContainer from '../containers/AssetContainer';
 
 class AssetManagement extends React.Component {
@@ -9,7 +9,7 @@ class AssetManagement extends React.Component {
         return (
             <div className="am-start">
                 <Header />
-                <SearchArea />
+                <GroupBy />
                 <AssetContainer />
             </div>
         );

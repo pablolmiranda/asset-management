@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import appState from './app_state';
 import assets from './assets';
 import assetSelected from './asset_selected';
+import selectedAssetIndex from './selected_asset_index';
 
 const AssetManager = combineReducers({
     appState,
     assets,
-    assetSelected
+    assetSelected,
+    selectedAssetIndex
 });
 
 export default AssetManager;

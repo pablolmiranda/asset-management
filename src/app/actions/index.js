@@ -30,3 +30,10 @@ export const selectAsset = (asset) => {
         asset: asset
     };
 };
+
+export const selectAssetIndex = (assetIndex) => {
+    return {
+        type: actions.SELECT_ASSET_INDEX,
+        index: assetIndex
+    };
+};
