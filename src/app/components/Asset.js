@@ -13,4 +13,9 @@ const Asset = ({asset, onClickClose}) => {
     );
 };
 
+Asset.propTypes = {
+    asset: React.PropTypes.object.isRequired,
+    onClickClose: React.PropTypes.func
+};
+
 export default Asset;

@@ -8,4 +8,9 @@ const AssetThumb = ({ asset, onClick }) => {
     );
 };
 
+AssetThumb.propTypes = {
+    asset: React.PropTypes.object.isRequired,
+    onClick: React.PropTypes.func
+};
+
 export default AssetThumb;

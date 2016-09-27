@@ -4,7 +4,7 @@ import React from 'react';
  * Render a section landmark.
  * Helps keep the UI organized under a specific index
  */
-export default ({ asset, sectionId }) => {
+const AssetSection = ({ asset, sectionId }) => {
     sectionId = sectionId || 'movieName';
     return (
         <li className="section">
@@ -12,3 +12,10 @@ export default ({ asset, sectionId }) => {
         </li>
     );
 };
+
+AssetSection.propTypes = {
+    asset: React.PropTypes.object.isRequired,
+    sectionId: React.PropTypes.string.isRequired
+};
+
+export default AssetSection;

@@ -6,7 +6,7 @@ describe('src/app/components/AssetSectionName', () => {
 
     it('renders the asset section name', () => {
         const asset = Factory.build('asset');
-        const wrapper = mount(<AssetSectionName asset={asset}/>);
+        const wrapper = mount(<AssetSectionName asset={asset} sectionId="movieName"/>);
 
         expect(wrapper.find('li.section')).to.have.length(1);
         expect(wrapper.find('h3')).to.have.length(1);

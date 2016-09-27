@@ -49,6 +49,11 @@ class GroupBy extends React.Component {
     }
 }
 
+GroupBy.propTypes = {
+    selectedIndex: React.PropTypes.string.isRequired,
+    selectIndex: React.PropTypes.func.isRequired
+};
+
 const mapStateToProps = (state) => ({
     selectedIndex: state.selectedAssetIndex
 });

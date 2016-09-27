@@ -39,4 +39,12 @@ const AssetThumbList = ({assets, selectedAssetIndex, numPages, onClickAsset, onC
     );
 };
 
+AssetThumbList.propTypes = {
+    assets: React.PropTypes.array.isRequired,
+    selectedAssetIndex: React.PropTypes.string.isRequired,
+    numPages: React.PropTypes.number.isRequired,
+    onClickAsset: React.PropTypes.func,
+    onClickLoadMore: React.PropTypes.func
+};
+
 export default AssetThumbList;

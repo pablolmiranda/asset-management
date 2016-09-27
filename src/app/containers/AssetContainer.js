@@ -34,6 +34,15 @@ const AssetContainer = ({ asset, assets, selectedAssetIndex, selectAsset, pageIn
     );
 };
 
+AssetContainer.propTypes = {
+    asset: React.PropTypes.object,
+    assets: React.PropTypes.array.isRequired,
+    selectedAssetIndex: React.PropTypes.string,
+    selectAsset: React.PropTypes.func,
+    pageIndex: React.PropTypes.number,
+    incrementPageIndex: React.PropTypes.func
+};
+
 const mapStateToProps = (state) => {
     const query = state.assets.query;
     let assets = state.assets[state.selectedAssetIndex];
