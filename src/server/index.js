@@ -22,9 +22,15 @@ app.get('/', (req, res) => {
  * The response object will return res.end at the end of the stream.
  */
 app.get('/api/movies', (req, res) => {
-    res.set('Content-Type', 'application/json');
-    var stream = fs.createReadStream(paths.appServerPayload, { bufferSize: STREAM_BUFFER_SIZE});
-    stream.pipe(res);
+    fs.stat(paths.appServerPayload, (err) => {
+        if (err) {
+            return res.sendStatus(404);
+        }
+
+        res.set('Content-Type', 'application/json');
+        fs.createReadStream(paths.appServerPayload, { bufferSize: STREAM_BUFFER_SIZE})
+            .pipe(res);
+    });
 });
 
 module.exports = app;
